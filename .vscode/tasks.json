@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build with g++",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "sectionizer/sectionizer.cpp",            // Replace with your actual source file(s)
+        "-o", "sectionizer.dll",      // Output executable name
+        "-Wall",               // Show all warnings
+        "-g"                   // Include debug symbols
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

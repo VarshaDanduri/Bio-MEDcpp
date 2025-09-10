@@ -2,7 +2,6 @@
 #include <map>
 #include <string>
 #include <regex>
-#include <Python.h>
 
 using std::cout;
 using std::endl;
@@ -13,6 +12,7 @@ using std::string;
 
 extern "C" {
 
+    int main() {
     map<string, bool>DEFAULT_ATTRS = {
         {"diagnoses_history", true},
         {"family_history", true},
@@ -53,19 +53,30 @@ extern "C" {
             end_line_phrase = end_line_phrase;
             end_line_char = end_line_char;
             match_attr = match_attr;
+            };
 
             //lineRule -> return new_line_rule
+            string lineRule() {
+                return new_line_rule;
+            };
+
             //maxLength -> return max_section_length
+            int maxLength() {
+                return max_section_length;
+            };
+
             //minLength -> return min_section_length
-            //startPhrase -> return start_line_phrase
-            //startChar -> return start_line_char
-            //endPhrase -> return end_line_phrase
-            //endChar -> retur end_line_char
+            int minLength(){
+                return min_section_length;
+            };
+
             //matchAttr -> returns match_attr
-        };
-
-
+            char matchAttr() {
+                return match_attr[6];
+            };
     };
+    return 0;
+}
 }
 
 
