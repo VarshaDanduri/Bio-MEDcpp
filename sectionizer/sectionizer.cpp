@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include <regex>
+#include <Python.h>
 
 using std::cout;
 using std::endl;
