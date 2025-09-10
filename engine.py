@@ -1,4 +1,6 @@
 import ctypes
 
-pyopengl = ctypes.DLL('./library.dll')
+
+lib = ctypes.CDLL('library.dll')
+print(lib.main)
 
