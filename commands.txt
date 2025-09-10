@@ -1,0 +1,2 @@
+g++ -O3 -Wall -shared -std=c++20 -I assets/include -L assets/libs library.cpp -o library.dll -lglfw3dll
+
