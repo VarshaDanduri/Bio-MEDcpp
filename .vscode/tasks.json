@@ -6,10 +6,12 @@
       "type": "shell",
       "command": "g++",
       "args": [
-        "sectionizer/sectionizer.cpp",            // Replace with your actual source file(s)
-        "-o", "sectionizer.dll",      // Output executable name
-        "-Wall",               // Show all warnings
-        "-g"                   // Include debug symbols
+        "-shared",
+        "-o",
+        "sectionizer.dll",
+        "sectionizer/sectionizer.cpp",            
+        "-Wall",               
+        "-g"                  
       ],
       "group": {
         "kind": "build",
