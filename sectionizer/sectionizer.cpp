@@ -4,12 +4,14 @@
 #include <string>
 #include <regex>
 #include <cstring>
+#include <list>
 
 using std::cout;
 using std::endl;
 using std::map;
 using std::string;
 using std::strncpy;
+using std::list;
 
 map<string, bool>DEFAULT_ATTRS = {
         {"diagnoses_history", true},
@@ -42,23 +44,26 @@ class Sectionizer{
             strncpy(this->match_attr, match_attr, 6);
             };
 
-            void details(){
-                cout << "Language: " << language << endl;
-                cout << "Start Line Phrase: " << start_line_phrase << endl;
-                cout << "End Line Phrase: " << end_line_phrase << endl;
-                cout << "Match Attribute: " << match_attr << endl;
-                cout << "New Line Rule: " << new_line_rule << endl;
-            };
-
     };
 
 Sectionizer* load() {
     return new Sectionizer("en", "", "", "lower");
 }
 
+map<string, bool> get_default_attrs() {
+    return DEFAULT_ATTRS;
+}
+
+void add_attrs(list<string> attrs) {
+    for (string attr: attrs){
+        DEFAULT_ATTRS[attrs] = true;
+    }
+}
 
 PYBIND11_MODULE(sectionizer, m) {
-    m.def("load", &load, "A function that loads a Sectionizer object.");
+    m.def("load", &load, "Loads a new Sectionizer object.");
+    m.def("get_default_attrs", &get_default_attrs, "Returns defaults context rules.");
+    m.def("add_attrs", &add_attrs, "Adds new contxt rules. Takes a list of contest rules.");
 }
 
 
