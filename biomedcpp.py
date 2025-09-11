@@ -1,6 +1,6 @@
 import sectionizer as s
 
-print(s)
+print(dir(s))
 
 
 
