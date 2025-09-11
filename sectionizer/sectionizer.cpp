@@ -1,4 +1,5 @@
 #include <iostream>
+#include <pybind11/pybind11.h>
 #include <map>
 #include <string>
 #include <regex>
@@ -41,28 +42,23 @@ class Sectionizer{
             strncpy(this->match_attr, match_attr, 6);
             };
 
-            //lineRule -> return new_line_rule
-            string lineRule() {
-                return new_line_rule;
+            void details(){
+                cout << "Language: " << language << endl;
+                cout << "Start Line Phrase: " << start_line_phrase << endl;
+                cout << "End Line Phrase: " << end_line_phrase << endl;
+                cout << "Match Attribute: " << match_attr << endl;
+                cout << "New Line Rule: " << new_line_rule << endl;
             };
 
-            //matchAttr -> returns match_attr
-            char matchAttr() {
-                return *match_attr;
-            };
     };
 
+Sectionizer* load() {
+    return new Sectionizer("en", "", "", "lower");
+}
 
-extern "C" {
 
-    void load(string l, 
-        string slp, 
-        string elp, 
-        char ma[6]){
-
-    Sectionizer newSectionizer(l, slp, elp, ma);
-    }
-
+PYBIND11_MODULE(sectionizer, m) {
+    m.def("load", &load, "A function that loads a Sectionizer object.");
 }
 
 

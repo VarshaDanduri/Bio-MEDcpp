@@ -1,9 +1,6 @@
-import ctypes, os
+import sectionizer as s
 
-dll_path = os.path.abspath('sectionizer.dll')
-LIB = ctypes.CDLL(dll_path)
-print(LIB)
-
+print(s)
 
 
 
